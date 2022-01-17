@@ -5,11 +5,16 @@ import store from './redux/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import 'bootstrap/dist/css/bootstrap.css';
+
 ReactDOM.render(
+  <div className='d-flex justify-content-center mt-5'>
     <Provider store={store}>
       <App />
     </Provider>
-  ,document.getElementById('root')
+  </div>
+
+  , document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
