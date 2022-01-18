@@ -8,12 +8,9 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(
-  <div className='d-flex justify-content-center mt-5'>
     <Provider store={store}>
       <App />
     </Provider>
-  </div>
-
   , document.getElementById('root')
 );
 

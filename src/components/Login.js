@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../redux/actions/login';
 
 const Login = () => {
@@ -8,6 +9,9 @@ const Login = () => {
     const [error, setError] = useState(null);
 
     const dispatch = useDispatch();
+
+    const token = useSelector(store => store.loginUser);
+
 
     const handleApiData = async body => {
         try {
@@ -34,8 +38,13 @@ const Login = () => {
         })
     }
 
+    if (token) {
+        return <Navigate to='/' />
+    }
+
     return (
-        <>
+         <div className='d-flex justify-content-center mt-5'>
+
             <form onSubmit={handleSubmit} className='row'>
                 <div className="col-12 mb-3">
                     <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Name</label>
@@ -51,7 +60,7 @@ const Login = () => {
             </form>
             {error && <p>{error}</p>}
             {message && <p>{message}</p>}
-        </>
+        </div>
     )
 }
 
